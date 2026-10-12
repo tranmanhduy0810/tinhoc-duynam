@@ -1,0 +1,108 @@
+{
+  "source": "https://tinhockp.github.io/tinhoccoban/js/questions.js",
+  "repository": "https://github.com/TinHocKP/tinhoccoban",
+  "retrievedAt": "2026-10-12T03:33:13.862137+00:00",
+  "sourceSha256": "18cfed6d12b24f786327dcb70180af3167d8bc96288ec403f991d1a265783bef",
+  "count": 300,
+  "moduleCounts": {
+    "1": 50,
+    "2": 50,
+    "3": 50,
+    "4": 50,
+    "5": 50,
+    "6": 50
+  },
+  "images": [
+    {
+      "path": "assets/images/m2_img1.jpg",
+      "bytes": 2631,
+      "sha256": "54702f9706e0535c123dd9b869c231b2c36bfef474d463eec32ac8ea708a794c"
+    },
+    {
+      "path": "assets/images/m2_img2.jpg",
+      "bytes": 16942,
+      "sha256": "a8d95fa41dde8349c190764f97dc4e4d11d2b71d660a5117fa78eb819da8a9c1"
+    },
+    {
+      "path": "assets/images/m2_img3.jpg",
+      "bytes": 22889,
+      "sha256": "2a232f45caced77705f33073a6f46cc04f798d1986bb5fd8656658031867361c"
+    },
+    {
+      "path": "assets/images/m2_img4.jpg",
+      "bytes": 21521,
+      "sha256": "ed1421e1e4098669d025ca9c458482f903e779abc4f21a638b9503bda5b5c3fb"
+    },
+    {
+      "path": "assets/images/m2_img5.jpg",
+      "bytes": 18327,
+      "sha256": "5ff99631ae26511e27941f94e7fa1db3b721d474f2934a8aa1f04a2e2dbb2501"
+    },
+    {
+      "path": "assets/images/m2_img6.jpg",
+      "bytes": 19392,
+      "sha256": "a7c1e1d38645327cce1ef7938c7d05cecd83899a9d271b942b840cf3f926d0a8"
+    },
+    {
+      "path": "assets/images/m4_img1.jpg",
+      "bytes": 547,
+      "sha256": "f8d22aad0cc67fb954ad0575124288014905d20b5cc618c76116cb90bc9b87c9"
+    },
+    {
+      "path": "assets/images/m4_img2.jpg",
+      "bytes": 7222,
+      "sha256": "118d58b3c04545c67d51e1e7a26f108abc3a112139f64693a8b68e4f493d2e93"
+    },
+    {
+      "path": "assets/images/m4_img3.jpg",
+      "bytes": 6713,
+      "sha256": "c58de4da2ab35295dc82528b43eb8a1e68f4a039a57a8a287f3adfb8106a5af2"
+    },
+    {
+      "path": "assets/images/m5_img1.jpg",
+      "bytes": 3280,
+      "sha256": "98bcb563337f08dc49c96ae6f41ac072cc779a05019a43c9d428e82a91f25e0d"
+    },
+    {
+      "path": "assets/images/m5_img2.jpg",
+      "bytes": 5799,
+      "sha256": "b234512d691de34775f5fb8c88a0b3e6fe422f68bbde44a9856a901d9d3e678f"
+    },
+    {
+      "path": "assets/images/m5_img3.jpg",
+      "bytes": 941,
+      "sha256": "8fd57efd985e197a4fabeaffa77007b733f47e68bcd7515967826505a4cb5410"
+    },
+    {
+      "path": "assets/images/m5_img4.jpg",
+      "bytes": 6073,
+      "sha256": "396d892332af178046204b6b1b9ff93da74a2a195812077e9c2a65ae533a0d38"
+    },
+    {
+      "path": "assets/images/m5_img5.jpg",
+      "bytes": 1140,
+      "sha256": "05b1c4e786adfda1a4a89a51313384075a6c52f6ee8e42e340c666e8c819f016"
+    },
+    {
+      "path": "assets/images/m5_img6.jpg",
+      "bytes": 25352,
+      "sha256": "0eef67e58a7abbefb845135819d02d651e3c1cad1283080ec652b8d89b128795"
+    },
+    {
+      "path": "assets/images/m6_img1.jpg",
+      "bytes": 760,
+      "sha256": "a911e99457e3a5890f4d887d6907006b7564fe2d44c4af1f2fe60d63b02ae203"
+    },
+    {
+      "path": "assets/images/m6_img2.jpg",
+      "bytes": 8419,
+      "sha256": "4676fabc7e096e035ceb302006ea501e24b4d4abd10c4146697f6cf778ab3c7a"
+    }
+  ],
+  "variableOptions": [
+    {
+      "sourceId": 247,
+      "count": 3
+    }
+  ]
+}

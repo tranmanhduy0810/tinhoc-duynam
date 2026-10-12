@@ -1,0 +1,23 @@
+{
+  "name": "tinhoc-duynam",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Website ôn luyện tin học cơ bản của Duy Nấm",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "start": "node scripts/serve.mjs",
+    "test:unit": "node --test tests/core.test.mjs",
+    "test:e2e": "playwright test",
+    "test": "npm run test:unit && npm run test:e2e",
+    "check": "node --check site/app.js && node --check site/core.js && npm run build && npm test"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "devDependencies": {
+    "@fontsource-variable/inter": "^5.3.0",
+    "@playwright/test": "^1.64.0",
+    "lucide": "^1.55.0"
+  }
+}
