@@ -5,6 +5,12 @@ const key = 'duynam.learning.v1';
 async function savedAttempt(page, draftKey = 'basics') { return page.evaluate(({ key, draftKey }) => JSON.parse(localStorage.getItem(key)).drafts[draftKey], { key, draftKey }); }
 async function openPractice(page) { await page.goto('/#practice/basics'); await expect(page.locator('.answer-option')).toHaveCount(4); }
 async function submit(page) { await page.locator('[data-action="submit"]').first().click(); await page.locator('[data-action="confirm-dialog"]').click(); await expect(page.locator('.result-score')).toBeVisible(); }
+async function startExam(page, name = 'Duy Nấm') {
+  await page.goto('/#exam'); await page.locator('[data-action="new-exam"]').click();
+  if (await page.locator('[data-action="confirm-dialog"]').isVisible()) await page.locator('[data-action="confirm-dialog"]').click();
+  await page.locator('#player-name').fill(name); await page.locator('#exam-name-form button[type="submit"]').click();
+  await expect(page.locator('.q-cell')).toHaveCount(30);
+}
 test('Trang chủ hiển thị 6 chủ đề, tìm không dấu và trạng thái rỗng', async ({ page }) => {
   await page.goto('/'); await expect(page.locator('.topic-card[data-search]')).toHaveCount(6);
   await page.getByRole('searchbox').fill('bang tinh'); await expect(page.locator('.topic-card[data-search]:visible')).toHaveCount(1);
@@ -33,7 +39,7 @@ test('Nộp đúng hết được 10 điểm, lịch sử được giữ sau rel
   await page.goto('/#history'); await page.reload(); await expect(page.locator('.history-row')).toHaveCount(1);
 });
 test('Thi thử tạo 30 câu cân bằng, không lộ đáp án; đồng hồ không reset', async ({ page }) => {
-  await page.goto('/#exam'); await page.locator('[data-action="new-exam"]').click(); await expect(page.locator('.q-cell')).toHaveCount(30);
+  await startExam(page);
   await expect(page.locator('#instant-check')).toHaveCount(0); await page.locator('[data-answer="0"]').click(); await expect(page.locator('.explanation')).toHaveCount(0);
   const first = await page.evaluate(k => JSON.parse(localStorage.getItem(k)).drafts.exam, key);
   expect(new Set(first.questions.map(q => q.id)).size).toBe(30);
@@ -41,15 +47,40 @@ test('Thi thử tạo 30 câu cân bằng, không lộ đáp án; đồng hồ k
   await page.reload(); const second = await page.evaluate(k => JSON.parse(localStorage.getItem(k)).drafts.exam, key); expect(second.deadline).toBe(first.deadline);
 });
 test('Thi hết giờ tự nộp sau khi mở lại trang', async ({ page }) => {
-  await page.goto('/#exam'); await page.locator('[data-action="new-exam"]').click(); await expect(page.locator('#timer-value')).toBeVisible();
+  await startExam(page); await expect(page.locator('#timer-value')).toBeVisible();
   await page.addInitScript(k => { const s = JSON.parse(localStorage.getItem(k)); if (s?.drafts?.exam) { s.drafts.exam.startedAt = Date.now() - 1900000; s.drafts.exam.deadline = Date.now() - 1000; localStorage.setItem(k, JSON.stringify(s)); } }, key);
   await page.reload(); await expect(page.locator('.result-score')).toBeVisible(); await expect(page.getByText('Tự động nộp khi hết giờ', { exact: false })).toBeVisible();
 });
 test('Thi hết giờ khi đang ôn chủ đề khác không làm mất bài đang ôn', async ({ page }) => {
-  await page.goto('/#exam'); await page.locator('[data-action="new-exam"]').click(); await expect(page.locator('#timer-value')).toBeVisible();
+  await startExam(page); await expect(page.locator('#timer-value')).toBeVisible();
   await page.addInitScript(k => { const s = JSON.parse(localStorage.getItem(k)); if (s?.drafts?.exam) { s.drafts.exam.startedAt = Date.now() - 1900000; s.drafts.exam.deadline = Date.now() - 1000; localStorage.setItem(k, JSON.stringify(s)); } }, key);
   await page.goto('/#practice/basics'); await page.reload(); await expect(page.locator('.answer-option')).toHaveCount(4);
   await expect.poll(() => page.evaluate(k => JSON.parse(localStorage.getItem(k)).history.length, key)).toBe(1); await expect(page.locator('#question-title')).toContainText((await savedAttempt(page)).questions[0].text);
+});
+test('Nhập tên trước khi thi và xếp hạng theo số câu đúng rồi thời gian', async ({ page }) => {
+  await startExam(page, 'Duy Nấm');
+  const attempt = await savedAttempt(page, 'exam'); expect(attempt.playerName).toBe('Duy Nấm');
+  for (let i = 0; i < attempt.questions.length; i++) {
+    await page.locator(`[data-answer="${attempt.questions[i].answer}"]`).click();
+    if (i < attempt.questions.length - 1) await page.locator('[data-action="next"]').click();
+  }
+  await submit(page);
+  await page.evaluate(key => {
+    const state = JSON.parse(localStorage.getItem(key)), best = state.history[0];
+    const slower = structuredClone(best); slower.id = 'slower'; slower.playerName = 'Anh Chậm'; slower.startedAt = slower.submittedAt - 90000;
+    const lessCorrect = structuredClone(best); lessCorrect.id = 'less-correct'; lessCorrect.playerName = 'Bình Nhanh'; lessCorrect.startedAt = lessCorrect.submittedAt - 10000; delete lessCorrect.answers[lessCorrect.questions[0].id];
+    state.history = [lessCorrect, slower, best]; localStorage.setItem(key, JSON.stringify(state));
+  }, key);
+  await page.reload(); await page.goto('/#practice');
+  await expect(page.locator('.home-ranking-card')).toHaveCount(3);
+  await expect(page.locator('.home-ranking-card').nth(0)).toContainText('Duy Nấm');
+  await expect(page.locator('.home-ranking-card').nth(1)).toContainText('Anh Chậm');
+  await expect(page.locator('.home-ranking-card').nth(2)).toContainText('Bình Nhanh');
+  await page.goto('/#ranking');
+  await expect(page.locator('.ranking-table tbody tr')).toHaveCount(3);
+  await expect(page.locator('.ranking-table tbody tr').nth(0)).toContainText('Duy Nấm');
+  await expect(page.locator('.ranking-table tbody tr').nth(1)).toContainText('Anh Chậm');
+  await expect(page.locator('.ranking-table tbody tr').nth(2)).toContainText('Bình Nhanh');
 });
 test('Thêm câu hỏi, xuất ngân hàng, khôi phục bộ mẫu', async ({ page }) => {
   await page.goto('/#library'); await page.locator('[data-action="add-question"]').click();
@@ -87,7 +118,7 @@ test('Đường dẫn practice.html và tài nguyên tương đối hoạt độ
 });
 test('Không có lỗi JavaScript hoặc tài nguyên lỗi trên các màn chính', async ({ page }) => {
   const errors = []; page.on('pageerror', e => errors.push(e.message)); page.on('response', r => { if (r.status() >= 400) errors.push(`${r.status()} ${r.url()}`); });
-  for (const route of ['practice', 'exam', 'history', 'library', 'practice/excel']) { await page.goto(`/#${route}`); await expect(page.locator('h1')).toHaveCount(1); }
+  for (const route of ['practice', 'exam', 'ranking', 'history', 'library', 'practice/excel']) { await page.goto(`/#${route}`); await expect(page.locator('h1')).toHaveCount(1); }
   expect(errors).toEqual([]);
 });
 test('Hai tab nhận thay đổi và không ghi đè bài đã nộp', async ({ page, context }) => {
@@ -107,8 +138,8 @@ test('Lượt ôn mới trộn đủ 50 câu, giữ lựa chọn; reload không 
   await page.reload(); const third = await savedAttempt(page); expect(third.id).toBe(second.id); expect(third.questions).toEqual(second.questions);
 });
 test('Mỗi đề thi mới rút và trộn lại, vẫn đúng 5 câu mỗi module', async ({ page }) => {
-  await page.goto('/#exam'); await page.locator('[data-action="new-exam"]').click(); const first = await savedAttempt(page, 'exam');
-  await page.goto('/#exam'); await page.locator('[data-action="new-exam"]').click(); await page.locator('[data-action="confirm-dialog"]').click();
+  await startExam(page, 'Lượt một'); const first = await savedAttempt(page, 'exam');
+  await startExam(page, 'Lượt hai');
   const second = await savedAttempt(page, 'exam'); expect(second.id).not.toBe(first.id); expect(second.questions.map(q => q.id)).not.toEqual(first.questions.map(q => q.id));
   for (const t of bank.topics) expect(second.questions.filter(q => q.topicId === t.id)).toHaveLength(5);
 });
@@ -149,7 +180,7 @@ test('Tên Ôn tập tin học và bố cục khớp ảnh ở màn 1200×550', 
 });
 for (const width of [375, 768, 1280, 1920]) test(`Không tràn ngang ở ${width}px trên mọi màn chính`, async ({ page }) => {
   await page.setViewportSize({ width, height: 900 });
-  for (const route of ['practice', 'exam', 'history', 'library', 'practice/word']) {
+  for (const route of ['practice', 'exam', 'ranking', 'history', 'library', 'practice/word']) {
     await page.goto(`/#${route}`); await expect(page.locator('h1')).toBeVisible();
     const overflow = await page.evaluate(() => document.documentElement.scrollWidth > innerWidth + 1); expect(overflow, route).toBe(false);
   }

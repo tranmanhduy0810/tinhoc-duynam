@@ -1,0 +1,10 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "tinhoc-duynam-leaderboard",
+  "main": "worker/src/index.js",
+  "compatibility_date": "2026-10-13",
+  "vars": {
+    "ALLOWED_ORIGINS": "https://tranmanhduy0810.github.io,http://127.0.0.1:4173,http://localhost:4173"
+  },
+  "d1_databases": [{ "binding": "DB", "database_name": "tinhoc-duynam-leaderboard", "database_id": "162735ff-4e0b-4fb9-bbf5-473fcf27fcdf" }]
+}

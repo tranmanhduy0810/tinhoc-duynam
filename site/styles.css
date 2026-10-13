@@ -201,3 +201,87 @@ body:not(.exam-workspace) .site-footer{max-width:1200px;padding:20px 0 28px}
   body:not(.exam-workspace) .overview-strip .progress-track{width:82px}
   body:not(.exam-workspace) .topic-description{-webkit-line-clamp:1}
 }
+
+
+/* ===== Bảng xếp hạng thi thử ===== */
+.name-dialog-icon{width:48px;height:48px;margin-bottom:14px;display:grid;place-items:center;border-radius:14px;background:var(--primary-light);color:var(--primary)}
+.name-dialog-icon svg{width:24px;height:24px}
+.ranking-heading{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;margin-bottom:22px}
+.ranking-heading h1{margin:5px 0 4px;font-size:30px;letter-spacing:-.025em}
+.ranking-kicker{display:flex;align-items:center;gap:7px;color:var(--primary);font-size:12px;font-weight:700;letter-spacing:.07em}
+.ranking-kicker svg{width:16px;height:16px}
+.ranking-winners{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-bottom:16px}
+.winner-card{position:relative;min-width:0;padding:20px;border:1px solid var(--border);border-radius:14px;background:var(--surface);display:flex;align-items:center;gap:14px}
+.winner-card.winner-1{border-color:#e4cc79;background:#fffaf0}
+.winner-card.winner-2{background:#f8fafc}
+.winner-card.winner-3{background:#fff8f3}
+.winner-rank{position:absolute;top:10px;right:12px;width:28px;height:28px;display:grid;place-items:center;border-radius:9px;background:var(--secondary);color:var(--muted);font-size:12px;font-weight:700}
+.winner-1 .winner-rank{background:#ffecad;color:#765408}
+.winner-icon{width:46px;height:46px;flex:0 0 auto;display:grid;place-items:center;border-radius:13px;background:var(--primary-light);color:var(--primary)}
+.winner-1 .winner-icon{background:#ffecad;color:#92600a}
+.winner-icon svg{width:23px;height:23px}
+.winner-card>div:last-child{min-width:0;padding-right:24px}
+.winner-card h2{margin:2px 0;font-size:16px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.winner-card p{font-size:12px;color:var(--muted);white-space:nowrap}
+.winner-card p strong{color:var(--foreground)}
+.ranking-panel{padding:0!important;overflow:hidden}
+.ranking-table-scroll{overflow-x:auto}
+.ranking-table{width:100%;border-collapse:collapse;min-width:720px}
+.ranking-table th,.ranking-table td{padding:14px 16px;border-bottom:1px solid var(--border);text-align:left;white-space:nowrap}
+.ranking-table th{background:#f8fafc;color:var(--muted);font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.035em}
+.ranking-table td{font-size:13px;font-variant-numeric:tabular-nums}
+.ranking-table tbody tr:last-child td{border-bottom:0}
+.ranking-table tbody tr:hover{background:#fbfdff}
+.rank-badge{width:30px;height:30px;display:grid;place-items:center;border-radius:9px;background:var(--secondary);color:var(--muted);font-weight:700}
+.ranking-table tr:nth-child(1) .rank-badge{background:#ffecad;color:#765408}
+.ranking-table tr:nth-child(2) .rank-badge{background:#e9eef5;color:#4a596f}
+.ranking-table tr:nth-child(3) .rank-badge{background:#f6e4d6;color:#89522d}
+.ranking-correct{color:var(--success);font-weight:700}
+.ranking-footnote{padding:13px 16px;border-top:1px solid var(--border);background:#f8fbff;color:var(--muted);display:flex;align-items:flex-start;gap:8px;font-size:12px}
+.ranking-footnote svg{width:16px;height:16px;margin-top:1px;color:var(--primary)}
+.ranking-empty{min-height:320px}
+@media(max-width:767px){
+  .ranking-heading{align-items:stretch;flex-direction:column;margin-bottom:16px}
+  .ranking-heading h1{font-size:25px}
+  .ranking-heading .btn{width:100%}
+  .ranking-winners{grid-template-columns:1fr;gap:9px}
+  .winner-card{padding:15px 16px}
+  .winner-card>div:last-child{padding-right:30px}
+  .ranking-panel{margin-inline:0}
+  .ranking-table th,.ranking-table td{padding:12px 14px}
+  .ranking-footnote{position:sticky;left:0;width:100%}
+}
+
+
+/* ===== Top 3 trên trang chủ ===== */
+.home-ranking{margin-bottom:30px}
+.home-ranking-head{align-items:flex-end}
+.home-ranking-head h2{margin-top:4px}
+.home-ranking-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.home-ranking-card{position:relative;min-width:0;padding:16px;border:1px solid var(--border);border-radius:14px;background:var(--surface);display:flex;align-items:center;gap:12px}
+.home-ranking-card.rank-1{border-color:#e4cc79;background:#fffaf0}
+.home-rank-number{position:absolute;top:10px;right:10px;width:28px;height:28px;display:grid;place-items:center;border-radius:9px;background:var(--secondary);color:var(--muted);font-size:12px;font-weight:700}
+.home-ranking-card.rank-1 .home-rank-number{background:#ffecad;color:#765408}
+.home-ranking-card.rank-2 .home-rank-number{background:#e9eef5;color:#4a596f}
+.home-ranking-card.rank-3 .home-rank-number{background:#f6e4d6;color:#89522d}
+.home-rank-icon{width:44px;height:44px;display:grid;place-items:center;flex:0 0 auto;border-radius:12px;background:var(--primary-light);color:var(--primary)}
+.home-ranking-card.rank-1 .home-rank-icon{background:#ffecad;color:#92600a}
+.home-rank-icon svg{width:22px;height:22px}
+.home-rank-info{min-width:0;padding-right:25px}
+.home-rank-info h3{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.home-rank-info p{font-size:12px;color:var(--muted);white-space:nowrap}
+.home-rank-info p strong{color:var(--foreground)}
+.home-ranking-empty{padding:16px 18px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.home-ranking-empty>div{display:flex;align-items:center;gap:12px}
+.home-ranking-empty>div>svg{width:26px;height:26px;color:var(--primary)}
+.home-ranking-empty span{display:flex;flex-direction:column}
+.home-ranking-empty small{color:var(--muted)}
+@media(max-width:767px){
+  .home-ranking{margin-bottom:24px}
+  .home-ranking-head{align-items:stretch}
+  .home-ranking-head .btn{width:100%}
+  .home-ranking-grid{grid-template-columns:1fr;gap:8px}
+  .home-ranking-card{padding:14px}
+  .home-ranking-empty{align-items:stretch;flex-direction:column}
+  .home-ranking-empty .btn{width:100%}
+}
