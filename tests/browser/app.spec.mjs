@@ -191,7 +191,7 @@ test('Bộ đề Lớp học Củ Chi có 50 câu từ IU03, IU04, IU05', async 
   const set = JSON.parse(await readFile(new URL('../../site/data/lop-cu-chi.json', import.meta.url)));
   expect(set.title).toBe('Lớp học Củ Chi'); expect(set.questions).toHaveLength(50); expect(new Set(set.questions.map(q => q.id)).size).toBe(50);
   expect(set.questions.every(q => ['word', 'excel', 'powerpoint'].includes(q.topicId))).toBe(true);
-  await page.goto('/'); await expect(page.locator('.class-set-card h3')).toHaveText('Lớp học Củ Chi');
-  await page.locator('.class-set-card a').click(); await expect(page.locator('.q-cell')).toHaveCount(50);
+  await page.goto(`/#practice/cuchi`);
+  await expect(page.locator('.q-cell')).toHaveCount(50);
   expect((await savedAttempt(page, 'cuchi')).title).toBe('Lớp học Củ Chi');
 });

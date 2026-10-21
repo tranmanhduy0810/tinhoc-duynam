@@ -122,7 +122,7 @@ function overview() {
     ${latest ? `<div class="restore-banner"><div><strong>Bạn còn một bài đang làm</strong><p>${esc(latest[1].title)} · Đã trả lời ${grade(latest[1]).answered}/${latest[1].questions.length} câu</p></div>${btn('Tiếp tục bài', 'resume', { data: `data-key="${esc(latest[0])}"`, glyph: 'arrow-right' })}</div>` : ''}
     ${homeRanking()}
     <section aria-labelledby="topics-heading"><div class="section-head"><div><h2 id="topics-heading">Bạn muốn ôn chủ đề nào?</h2><p class="small muted">Học theo thứ tự hoặc chọn phần bạn cần củng cố.</p></div><div class="search-box">${icon('search')}<input type="search" id="topic-search" placeholder="Tìm chủ đề, ví dụ: Excel" aria-label="Tìm chủ đề" autocomplete="off"><button class="btn ghost search-clear" id="search-clear" data-action="clear-search" aria-label="Xóa tìm kiếm" hidden>${icon('x')}</button></div></div><div class="topic-grid">${bank.topics.map(topicCard).join('')}<div id="topic-empty" class="empty-state panel" hidden>${icon('search')}<h3>Không tìm thấy chủ đề</h3><p>Thử một từ khóa khác hoặc xóa tìm kiếm để xem tất cả chủ đề.</p>${btn('Xóa tìm kiếm', 'clear-search')}</div></div></section>
-    ${classSetCard()}
+    
     <div class="note-line">${icon('info')}<span>${esc(customBank ? 'Đang sử dụng ngân hàng tùy chỉnh trên trình duyệt này.' : CONFIG.bankLabel)}. Tiến độ được lưu tự động khi trình duyệt cho phép.</span></div>`);
 }
 function homeRanking() {
