@@ -187,11 +187,11 @@ for (const width of [375, 768, 1280, 1920]) test(`Không tràn ngang ở ${width
   await page.screenshot({ path: `artifacts/workspace-${width}.png`, fullPage: true });
   await page.goto('/'); await expect(page.locator('.topic-card[data-search]')).toHaveCount(6); await page.screenshot({ path: `artifacts/home-${width}.png`, fullPage: true });
 });
-test('Bộ đề Lớp học Củ Chi có 100 câu từ IU03, IU04, IU05', async ({ page }) => {
+test('Bộ đề Lớp học Củ Chi có 50 câu từ IU03, IU04, IU05', async ({ page }) => {
   const set = JSON.parse(await readFile(new URL('../../site/data/lop-cu-chi.json', import.meta.url)));
-  expect(set.title).toBe('Lớp học Củ Chi'); expect(set.questions).toHaveLength(100); expect(new Set(set.questions.map(q => q.id)).size).toBe(100);
+  expect(set.title).toBe('Lớp học Củ Chi'); expect(set.questions).toHaveLength(50); expect(new Set(set.questions.map(q => q.id)).size).toBe(50);
   expect(set.questions.every(q => ['word', 'excel', 'powerpoint'].includes(q.topicId))).toBe(true);
   await page.goto('/'); await expect(page.locator('.class-set-card h3')).toHaveText('Lớp học Củ Chi');
-  await page.locator('.class-set-card a').click(); await expect(page.locator('.q-cell')).toHaveCount(100);
+  await page.locator('.class-set-card a').click(); await expect(page.locator('.q-cell')).toHaveCount(50);
   expect((await savedAttempt(page, 'cuchi')).title).toBe('Lớp học Củ Chi');
 });

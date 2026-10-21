@@ -1,0 +1,1 @@
+CREATE TABLE IF NOT EXISTS cuchi_results (attempt_id TEXT PRIMARY KEY, player_name TEXT NOT NULL, class_name TEXT NOT NULL, correct_answers INTEGER NOT NULL CHECK(correct_answers BETWEEN 0 AND 15), total_questions INTEGER NOT NULL DEFAULT 15, duration_seconds INTEGER NOT NULL, submitted_at INTEGER NOT NULL);

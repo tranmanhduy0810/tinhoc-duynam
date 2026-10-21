@@ -1,3 +1,4 @@
+import { saveCuchi } from './cuchi.js';
 const JSON_HEADERS = { 'content-type': 'application/json; charset=utf-8' };
 
 export function normalizeName(value) {
@@ -45,6 +46,7 @@ export default {
     if (request.method === 'OPTIONS') return new Response(null, { status: 204, headers: corsHeaders(request, env) });
     const path = new URL(request.url).pathname;
     try {
+      if (path === '/api/cuchi/results' && request.method === 'POST') return await saveCuchi(request, env, json);
       if (path === '/api/leaderboard' && request.method === 'GET') return await listScores(request, env);
       if (path === '/api/scores' && request.method === 'POST') return await saveScore(request, env);
       if (path === '/health' && request.method === 'GET') return json(request, env, { ok: true });
