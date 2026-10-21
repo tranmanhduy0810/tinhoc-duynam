@@ -143,10 +143,28 @@ function examLanding() {
   const draft = state.drafts.exam;
   page(`<div class="page-heading"><h1>Phòng thi thử</h1><p>Thử sức với đề tổng hợp và làm quen với áp lực thời gian.</p></div><div class="exam-layout"><section class="panel exam-intro"><div class="exam-symbol">${icon('timer')}</div><div><h2>Kiểm tra kiến thức tổng hợp</h2><p class="muted section-gap">Câu hỏi được chọn ngẫu nhiên, phân bổ đều giữa 6 chủ đề. Mỗi lượt thi là một cơ hội để biết mình đã tiến bộ ở đâu.</p></div><div class="exam-facts"><div><div class="fact-value">${CONFIG.examQuestions} câu</div><div class="fact-label">Trắc nghiệm nhiều lựa chọn</div></div><div><div class="fact-value">${CONFIG.examMinutes} phút</div><div class="fact-label">Tự nộp khi hết giờ</div></div><div><div class="fact-value">${CONFIG.passPercent}%</div><div class="fact-label">Mục tiêu luyện tập</div></div></div>${draft ? `<p class="muted">Có bài thi đang làm: ${grade(draft).answered}/${draft.questions.length} câu đã trả lời. Thời gian tiếp tục chạy khi bạn rời trang.</p><div class="row">${btn('Tiếp tục bài thi', 'resume', { variant: 'primary', glyph: 'play', data: 'data-key="exam"' })}${btn('Tạo đề mới', 'new-exam')}</div>` : btn('Bắt đầu thi thử', 'new-exam', { variant: 'primary', glyph: 'play' })}<span class="small muted">Bạn sẽ nhập tên hiển thị trước khi bắt đầu. Thành tích được lưu trên thiết bị này.</span></section><aside class="panel"><h2>Trước khi bắt đầu</h2><ol class="rules-list"><li>Nhập tên hiển thị để ghi nhận thành tích vào bảng xếp hạng.</li><li>Chọn một đáp án cho mỗi câu. Có thể đổi đáp án trước khi nộp.</li><li>Đánh dấu câu cần xem lại và điều hướng bằng bảng số câu.</li><li>Đáp án, giải thích chỉ xuất hiện sau khi nộp bài.</li><li>Đồng hồ không đặt lại khi tải lại hoặc rời trang.</li><li>Tiến độ và kết quả lưu riêng trên trình duyệt này.</li></ol><a class="btn" href="#ranking">${icon('trophy')}Xem bảng xếp hạng</a></aside></div>`);
 }
+function cuchiLanding() {
+  const draft = state.drafts.cuchi;
+  page(`<div class="page-heading"><h1>Thi tin học Củ Chi</h1><p>15 câu ngẫu nhiên từ bộ 50 câu · 30 phút.</p></div><div class="exam-layout"><section class="panel exam-intro"><div class="exam-symbol">${icon('trophy')}</div><div><h2>Thi tin học Củ Chi</h2><p class="muted section-gap">Nhập họ tên, chọn lớp và làm 15 câu ngẫu nhiên từ bộ 50 câu Word/Excel/PowerPoint.</p></div><div class="exam-facts"><div><div class="fact-value">15 câu</div><div class="fact-label">Trắc nghiệm nhiều lựa chọn</div></div><div><div class="fact-value">${CONFIG.examMinutes} phút</div><div class="fact-label">Tự nộp khi hết giờ</div></div><div><div class="fact-value">${CONFIG.passPercent}%</div><div class="fact-label">Mục tiêu luyện tập</div></div></div>${draft ? `<p class="muted">Có bài thi đang làm: ${grade(draft).answered}/${draft.questions.length} câu đã trả lời. Thời gian tiếp tục chạy khi bạn rời trang.</p><div class="row">${btn('Tiếp tục bài thi', 'resume', { variant: 'primary', glyph: 'play', data: 'data-key="cuchi"' })}${btn('Tạo đề mới', 'new-exam')}</div>` : btn('Bắt đầu thi Củ Chi', 'new-exam', { variant: 'primary', glyph: 'play' })}<span class="small muted">Bạn sẽ nhập họ tên và chọn lớp trước khi bắt đầu. Kết quả gửi về hệ thống lớp.</span></section><aside class="panel"><h2>Trước khi bắt đầu</h2><ol class="rules-list"><li>Nhập họ tên và chọn lớp (Lớp tin học 1+2 hoặc Lớp tin học 3+4).</li><li>Chọn một đáp án cho mỗi câu. Có thể đổi đáp án trước khi nộp.</li><li>Đánh dấu câu cần xem lại và điều hướng bằng bảng số câu.</li><li>Đáp án, giải thích chỉ xuất hiện sau khi nộp bài.</li><li>Đồng hồ không đặt lại khi tải lại hoặc rời trang.</li><li>Kết quả gửi về hệ thống lớp, không vào bảng xếp hạng chung.</li></ol><a class="btn" href="#ranking">${icon('trophy')}Xem bảng xếp hạng chung</a></aside></div>`);
+}
 function beginExam(playerName) {
   const questions = selectExam(bank, CONFIG.examQuestions);
   state.drafts.exam = { ...createAttempt(questions, { mode: 'exam', title: 'Thi thử tổng hợp', minutes: CONFIG.examMinutes }), playerName };
   persist(); navigate('#exam/run');
+}
+function beginCuchiExam(playerName, className) {
+  if (!classSet) return;
+  const questions = shuffle(classSet.questions).slice(0, 15);
+  state.drafts.cuchi = { ...createAttempt(questions, { mode: 'exam', title: 'Thi tin học Củ Chi', minutes: CONFIG.examMinutes }), playerName, className };
+  persist(); navigate('#cuchi/run');
+}
+function startCuchiExam() {
+  const ask = () => {
+    openDialog(`<button class="btn ghost icon-button dialog-close" data-action="cancel-dialog" aria-label="Đóng">${icon('x')}</button><div class="name-dialog-icon">${icon('trophy')}</div><h2 id="dialog-title">Thi tin học Củ Chi</h2><p>Nhập họ tên và chọn lớp. 15 câu ngẫu nhiên từ bộ 50 câu · 30 phút.</p><form id="cuchi-name-form"><div class="form-field"><label for="cuchi-full-name">Họ và tên</label><input id="cuchi-full-name" name="fullName" type="text" required minlength="2" maxlength="80" autocomplete="name" placeholder="Ví dụ: Nguyễn Minh Anh"></div><div class="form-field"><label for="cuchi-class-name">Lớp</label><select id="cuchi-class-name" name="className" required><option value="">-- Chọn lớp --</option>${['Lớp tin học 1 + 2', 'Lớp tin học 3 + 4'].map(c => '<option>' + c + '</option>').join('')}</select></div><p class="small muted">Kết quả gửi về hệ thống lớp, không vào bảng xếp hạng chung.</p><p id="cuchi-name-error" class="error-text" role="alert"></p><div class="dialog-actions"><button type="button" class="btn" data-action="cancel-dialog">Quay lại</button><button type="submit" class="btn primary">Bắt đầu thi${icon('arrow-right')}</button></div></form>`);
+    $('#cuchi-full-name').focus();
+  };
+  if (state.drafts.cuchi) confirmAction('Tạo đề thi Củ Chi mới?', 'Bài thi đang làm sẽ được thay bằng đề mới. Kết quả đã nộp vẫn được giữ.', 'Tạo đề mới', ask, true);
+  else ask();
 }
 function startExam() {
   const askName = () => {
@@ -253,7 +271,8 @@ function results(id) {
     const subset = a.questions.filter(q => q.topicId === topicId);
     return { title: bank.topics.find(t => t.id === topicId)?.title || topicId, correct: subset.filter(q => a.answers[q.id] === q.answer).length, total: subset.length };
   });
-  page(`<div class="breadcrumb"><a href="#history">Kết quả của bạn</a>${icon('chevron-right')}<span>${esc(a.title)}</span></div><section class="panel results-hero"><div class="result-emblem">${icon(reached ? 'trophy' : 'target')}</div><h1>${reached ? 'Một bước tiến thật tốt!' : 'Mỗi lần luyện tập là một bước tiến.'}</h1><p class="muted" style="margin:8px auto 0">${esc(a.title)} · ${a.mode === 'exam' ? 'Thi thử' : a.mode === 'retry' ? 'Ôn lại câu chưa đúng' : 'Ôn theo chủ đề'}</p><div class="result-score">${s.score.toLocaleString('vi-VN')}<span> / 10 điểm</span></div><span class="pill ${reached ? 'green' : ''}">${s.percent}% chính xác${a.mode === 'exam' ? ` · ${reached ? 'Đạt' : 'Chưa đạt'} mục tiêu luyện tập` : ''}</span><div class="result-stats"><div><strong class="correct-stat">${s.correct}</strong><span>Trả lời đúng</span></div><div><strong class="wrong-stat">${s.wrong}</strong><span>Trả lời sai</span></div><div><strong>${s.unanswered}</strong><span>Chưa trả lời</span></div></div><div class="row result-actions"><a class="btn primary" href="#review/${esc(a.id)}">${icon('list-checks')}Xem đáp án & giải thích</a>${s.correct < s.total ? btn('Ôn lại câu chưa đúng', 'retry-wrong', { data: `data-id="${esc(a.id)}"`, glyph: 'rotate-ccw' }) : '<a class="btn" href="#practice">Ôn chủ đề khác</a>'}</div><p class="small muted" style="margin:24px auto 0">${a.autoSubmitted ? 'Tự động nộp khi hết giờ · ' : ''}${dateLabel(a.submittedAt)} · Thời gian từ lúc bắt đầu: ${formatTime(duration)}</p>${a.instant ? '<p class="small muted" style="margin:8px auto 0">Bài ôn tập đã bật xem đáp án ngay; điểm dùng để theo dõi việc học.</p>' : ''}</section><div class="panel result-details"><div class="row spread"><h2>Kết quả theo chủ đề</h2>${btn('Tải kết quả', 'export-result', { data: `data-id="${esc(a.id)}"`, glyph: 'download' })}</div>${topicResults.map(t => `<div class="result-detail-row"><span>${esc(t.title)}</span><strong>${t.correct}/${t.total} đúng</strong></div>`).join('')}</div>`);
+  const isCuchi = !!a.className;
+  page(`<div class="breadcrumb"><a href="#history">Kết quả của bạn</a>${icon('chevron-right')}<span>${esc(a.title)}</span></div><section class="panel results-hero"><div class="result-emblem">${icon(reached ? 'trophy' : 'target')}</div><h1>${reached ? 'Một bước tiến thật tốt!' : 'Mỗi lần luyện tập là một bước tiến.'}</h1><p class="muted" style="margin:8px auto 0">${esc(a.title)} · ${isCuchi ? 'Thi lớp Củ Chi' : a.mode === 'exam' ? 'Thi thử' : a.mode === 'retry' ? 'Ôn lại câu chưa đúng' : 'Ôn theo chủ đề'}${isCuchi ? ` · ${esc(a.className)}` : ''} · ${esc(a.playerName)}</p><div class="result-score">${s.score.toLocaleString('vi-VN')}<span> / 10 điểm</span></div><span class="pill ${reached ? 'green' : ''}">${s.percent}% chính xác${!isCuchi && a.mode === 'exam' ? ` · ${reached ? 'Đạt' : 'Chưa đạt'} mục tiêu luyện tập` : ''}</span><div class="result-stats"><div><strong class="correct-stat">${s.correct}</strong><span>Trả lời đúng</span></div><div><strong class="wrong-stat">${s.wrong}</strong><span>Trả lời sai</span></div><div><strong>${s.unanswered}</strong><span>Chưa trả lời</span></div></div><div class="row result-actions"><a class="btn primary" href="#review/${esc(a.id)}">${icon('list-checks')}Xem đáp án & giải thích</a>${!isCuchi && s.correct < s.total ? btn('Ôn lại câu chưa đúng', 'retry-wrong', { data: `data-id="${esc(a.id)}"`, glyph: 'rotate-ccw' }) : ''}</div><p class="small muted" style="margin:24px auto 0">${a.autoSubmitted ? 'Tự động nộp khi hết giờ · ' : ''}${dateLabel(a.submittedAt)} · Thời gian từ lúc bắt đầu: ${formatTime(duration)}</p>${a.instant ? '<p class="small muted" style="margin:8px auto 0">Bài ôn tập đã bật xem đáp án ngay; điểm dùng để theo dõi việc học.</p>' : ''}</section><div class="panel result-details"><div class="row spread"><h2>Kết quả theo chủ đề</h2>${btn('Tải kết quả', 'export-result', { data: `data-id="${esc(a.id)}"`, glyph: 'download' })}</div>${topicResults.map(t => `<div class="result-detail-row"><span>${esc(t.title)}</span><strong>${t.correct}/${t.total} đúng</strong></div>`).join('')}</div>`);
 }
 function historyPage() {
   page(`<div class="section-head"><div><h1>Kết quả của bạn</h1><p class="muted">Xem lại hành trình và củng cố những phần chưa vững.</p></div>${state.history.length ? btn('Xuất lịch sử', 'export-history', { glyph: 'download' }) : ''}</div>${state.history.length ? `<div class="history-list">${state.history.map(a => { const s = grade(a); return `<article class="history-row"><div class="history-info"><div class="score-badge">${s.score.toLocaleString('vi-VN')}<div class="small">/ 10</div></div><div><h3>${esc(a.title)}</h3><p class="small muted">${dateLabel(a.submittedAt)} · ${a.mode === 'exam' ? 'Thi thử' : a.mode === 'retry' ? 'Ôn câu chưa đúng' : 'Ôn tập'}</p><p class="small muted">${s.correct}/${s.total} câu đúng${a.instant ? ' · Có xem đáp án ngay' : ''}</p></div></div><div class="history-actions"><span class="pill ${s.percent >= CONFIG.passPercent ? 'green' : ''}">${s.percent}% chính xác</span><a class="btn" href="#result/${esc(a.id)}">Xem kết quả${icon('arrow-right')}</a></div></article>`; }).join('')}</div><p class="note-line">Lưu tối đa 50 bài gần nhất trên trình duyệt này. Xuất lịch sử để giữ một bản sao riêng.</p>` : `<section class="panel empty-state">${icon('history')}<h2>Hành trình bắt đầu từ bài đầu tiên</h2><p>Sau khi nộp bài ôn tập hoặc thi thử, kết quả và đáp án sẽ xuất hiện ở đây.</p><a class="btn primary" href="#practice">Chọn chủ đề để bắt đầu${icon('arrow-right')}</a></section>`}`);
@@ -295,6 +314,8 @@ function render() {
     else if (route === 'practice') { const a = getPractice(param); a ? workspace(a, param) : notFound(); }
     else if (route === 'exam' && !param) examLanding();
     else if (route === 'exam' && param === 'run') state.drafts.exam ? workspace(state.drafts.exam, 'exam') : examLanding();
+    else if (route === 'cuchi' && !param) { if (!classSet) return notFound(); cuchiLanding(); }
+    else if (route === 'cuchi' && param === 'run') state.drafts.cuchi ? workspace(state.drafts.cuchi, 'cuchi') : examLanding();
     else if (route === 'retry') state.drafts[param] ? workspace(state.drafts[param], param) : notFound();
     else if (route === 'history') historyPage();
     else if (route === 'ranking') rankingPage();
@@ -322,7 +343,7 @@ document.addEventListener('click', event => {
   else if (action === 'submit') requestSubmit();
   else if (action === 'confirm-dialog') { const callback = pendingConfirm; closeDialog(); callback?.(); }
   else if (action === 'cancel-dialog') closeDialog();
-  else if (action === 'new-exam') startExam();
+  else if (action === 'new-exam') { const [route] = (location.hash.slice(1) || 'practice').split('/'); if (route === 'cuchi') startCuchiExam(); else startExam(); }
   else if (action === 'new-practice') {
     if (!currentAttempt || reviewing || currentAttempt.mode === 'exam') return;
     confirmAction('Bắt đầu lượt mới?', 'Lượt mới sẽ trộn lại câu hỏi. Bài đang làm được giữ trong bản sao bài cũ, còn lịch sử đã nộp không thay đổi.', 'Trộn câu & bắt đầu', () => {
@@ -369,6 +390,18 @@ document.addEventListener('submit', event => {
     const playerName = cleanPlayerName(new FormData(event.target).get('playerName'));
     if (playerName.length < 2) { $('#name-error').textContent = 'Tên hiển thị cần ít nhất 2 ký tự.'; $('#player-name').focus(); return; }
     closeDialog(); beginExam(playerName); return;
+  }
+  if (event.target.id === 'cuchi-name-form') {
+    event.preventDefault();
+    const f = new FormData(event.target);
+    const name = String(f.get('fullName')).trim().replace(/\s+/g, ' ');
+    const className = f.get('className');
+    if (name.length < 2 || name.length > 80 || !['Lớp tin học 1 + 2', 'Lớp tin học 3 + 4'].includes(className)) {
+      $('#cuchi-name-error').textContent = 'Vui lòng nhập đầy đủ họ tên và chọn lớp.';
+      return;
+    }
+    closeDialog(); beginCuchiExam(name, className);
+    return;
   }
   if (event.target.id !== 'question-form') return;
   event.preventDefault(); const data = new FormData(event.target);
