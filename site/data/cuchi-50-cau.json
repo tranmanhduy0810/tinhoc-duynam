@@ -1,0 +1,658 @@
+{
+  "questions": [
+    {
+      "id": "tinhockp-151",
+      "topicId": "word",
+      "text": "Trong Microsoft Word, tổ hợp phím nào sau đây chọn toàn bộ tài liệu?",
+      "options": [
+        "Alt+A",
+        "Shift+Ctrl+A",
+        "Ctrl+A",
+        "Alt+F8"
+      ],
+      "answer": 2,
+      "explanation": "Đáp án đúng là lựa chọn: C. Ctrl+A"
+    },
+    {
+      "id": "tinhockp-152",
+      "topicId": "word",
+      "text": "Trong Microsoft Word, tổ hợp phím tắt để di chuyển con trỏ về cuối tài liệu?",
+      "options": [
+        "Ctrl+End",
+        "Ctrl+Page Down",
+        "End",
+        "Page Down"
+      ],
+      "answer": 0,
+      "explanation": "Đáp án đúng là lựa chọn: A. Ctrl+End"
+    },
+    {
+      "id": "tinhockp-153",
+      "topicId": "word",
+      "text": "Phím nào sau đây đưa con nháy về đầu dòng hiện hành trong Microsoft Word?",
+      "options": [
+        "Ctrl+Home",
+        "Ctrl+Page Up",
+        "Home",
+        "End"
+      ],
+      "answer": 2,
+      "explanation": "Đáp án đúng là lựa chọn: C. Home"
+    },
+    {
+      "id": "tinhockp-154",
+      "topicId": "word",
+      "text": "Phím tắt để di chuyển con trỏ về đầu tài liệu trong Microsoft Word?",
+      "options": [
+        "Ctrl+End",
+        "Ctrl+Home",
+        "Home",
+        "Ctrl+Page Up"
+      ],
+      "answer": 1,
+      "explanation": "Đáp án đúng là lựa chọn: B. Ctrl+Home"
+    },
+    {
+      "id": "tinhockp-155",
+      "topicId": "word",
+      "text": "Trong Microsoft Word, câu nào sau đây là không đúng trong trường hợp định dạng đoạn - Paragraph?",
+      "options": [
+        "Bấm nút Center trên thanh công cụ sẽ canh đoạn hiện hành hoặc đã chọn vào giữa trang.",
+        "Khoảng cách canh cột mặc nhiên là ½ inch.",
+        "Khi đặt một nút canh cột nó sẽ có tác dụng trên tất cả các đoạn văn bản trong tài liệu.",
+        "Hai loại canh lề đặc biệt là: First Line và Hanging trong Paragraph."
+      ],
+      "answer": 2,
+      "explanation": "Đáp án đúng là lựa chọn: C. Khi đặt một nút canh cột nó sẽ có tác dụng trên tất cả các đoạn văn bản trong tài liệu."
+    },
+    {
+      "id": "tinhockp-156",
+      "topicId": "word",
+      "text": "Với Microsoft Word, để định dạng hình ảnh với văn bản, ta ấn chuột phải vào hình ành và chọn _____",
+      "options": [
+        "AutoShape",
+        "Format AutoShape",
+        "Format Picture",
+        "Auto Picture"
+      ],
+      "answer": 2,
+      "explanation": "Đáp án đúng là lựa chọn: C. Format Picture"
+    },
+    {
+      "id": "tinhockp-157",
+      "topicId": "word",
+      "text": "Cách nhanh nhất để chọn một từ trong Microsoft Word?",
+      "options": [
+        "Kéo chuột qua từ đó.",
+        "Di chuyển điểm nháy đến chữ đầu, giữ phím shift và dùng các phím mũi tên.",
+        "Bấm chọn chức năng Select Word Wizard trên thanh công cụ và làm theo hường dẫn.",
+        "Nhấp đúp vào từ"
+      ],
+      "answer": 3,
+      "explanation": "Đáp án đúng là lựa chọn: D. Nhấp đúp vào từ"
+    },
+    {
+      "id": "tinhockp-158",
+      "topicId": "word",
+      "text": "Trong Microsoft Word, thao tác nào để sao chép định dạng và áp đặt định dạng cho nhiều dòng liên tiếp ?",
+      "options": [
+        "Bấm nút Format Painter trên thanh công cụ.",
+        "Bấm đúp nút Format Painter trên thanh công cụ. .",
+        "Không thực hiện được",
+        "Mở hộp thoại Copy and Apply Formatting bắng cách dùng lệnh Format - Copy Formatting từ menu"
+      ],
+      "answer": 1,
+      "explanation": "Đáp án đúng là lựa chọn: B. Bấm đúp nút Format Painter trên thanh công cụ. ."
+    },
+    {
+      "id": "tinhockp-159",
+      "topicId": "word",
+      "text": "Phát biểu nào sau đây là đúng khi sử dụng phím Enter trong Microsoft Word?",
+      "options": [
+        "Kết thúc đoạn văn hiện tại và bắt đầu một đoạn văn mới.",
+        "Tài liệu sẽ sang trang mới.",
+        "Đoạn văn sẽ qua dòng mới nhưng chưa kết thúc đoạn.",
+        "Nếu đã chia cột thì đoạn văn sẽ bị cắt qua cột mới."
+      ],
+      "answer": 0,
+      "explanation": "Đáp án đúng là lựa chọn: A. Kết thúc đoạn văn hiện tại và bắt đầu một đoạn văn mới."
+    },
+    {
+      "id": "tinhockp-160",
+      "topicId": "word",
+      "text": "Trong Microsoft Word, sử dụng tổ hợp phím Shift+Enter có chức năng gì?",
+      "options": [
+        "Kết thúc đoạn văn hiện tại và bắt đầu một đoạn văn mới.",
+        "Tài liệu sẽ sang trang mới.",
+        "Đoạn văn sẽ qua dòng mới nhưng chưa kết thúc đoạn.",
+        "Nếu đã chia cột thì đoạn văn sẽ bị cắt qua cột mới."
+      ],
+      "answer": 2,
+      "explanation": "Đáp án đúng là lựa chọn: C. Đoạn văn sẽ qua dòng mới nhưng chưa kết thúc đoạn."
+    },
+    {
+      "id": "tinhockp-161",
+      "topicId": "word",
+      "text": "Trong Microsoft Word, sử dụng tổ hợp phím Ctrl+Enter có chức năng gì?",
+      "options": [
+        "Kết thúc đoạn văn hiện tại và bắt đầu một đoạn văn mới.",
+        "Tài liệu sẽ sang trang mới.",
+        "Đoạn văn sẽ qua dòng mới nhưng chưa kết thúc đoạn.",
+        "Nếu đã chia cột thì đoạn văn sẽ bị cắt qua cột mới."
+      ],
+      "answer": 1,
+      "explanation": "Đáp án đúng là lựa chọn: B. Tài liệu sẽ sang trang mới."
+    },
+    {
+      "id": "tinhockp-162",
+      "topicId": "word",
+      "text": "Trong Microsoft Word, để nhập dữ liệu và di chuyển trong table, phát biểu nào sau đây là đúng?",
+      "options": [
+        "Tab để di chuyển qua ô kế tiếp, Shift+Tab để đi theo hướng ngược lại.",
+        "Enter để di chuyển qua ô kế tiếp, Shift+enter để đi theo hướng ngược lại.",
+        "Mũi tên phải để di chuyển qua ô kế tiếp, mũi tên trái để đi theo hướng ngược lại.",
+        "Mũi tên lên để di chuyển qua ô kế tiếp, mũi tên xuống để đi theo hướng ngược lại."
+      ],
+      "answer": 0,
+      "explanation": "Đáp án đúng là lựa chọn: A. Tab để di chuyển qua ô kế tiếp, Shift+Tab để đi theo hướng ngược lại."
+    },
+    {
+      "id": "tinhockp-163",
+      "topicId": "word",
+      "text": "Trong Microsoft Word, Style là gì?",
+      "options": [
+        "Cùng nghĩa với style trong thế giới thời trang",
+        "Một tập hợp các định dạng lưu trữ thành một tên gọi riêng và dễ dàng áp đặt lên các đối tượng khác bằng một thao tác duy nhất.",
+        "Một loại tài liệu đặc biệt.",
+        "Một thành phần định dạng chỉ dùng trong trang Web."
+      ],
+      "answer": 1,
+      "explanation": "Đáp án đúng là lựa chọn: B. Một tập hợp các định dạng lưu trữ thành một tên gọi riêng và dễ dàng áp đặt lên các đối tượng khác bằng một thao tác duy nhất."
+    },
+    {
+      "id": "tinhockp-164",
+      "topicId": "word",
+      "text": "Cách nào sau đây dùng để chọn nhiều đối tượng trên tài liệu trong Microsoft Word?",
+      "options": [
+        "Bấm nút Select Object trên thanh công cụ, bấm các đối tượng cần chọn, nhấn enter khi chọn xong.",
+        "Giữ phím Shift khi chọn mỗi đối tượng.",
+        "Chỉ có thể chọn một đối tượng mỗi lần.",
+        "Bấm nút mũi tên trên thanh công cụ Drawing và kéo một hình chữ nhật bao quanh các đối tượng cần chọn."
+      ],
+      "answer": 1,
+      "explanation": "Đáp án đúng là lựa chọn: B. Giữ phím Shift khi chọn mỗi đối tượng."
+    },
+    {
+      "id": "tinhockp-165",
+      "topicId": "word",
+      "text": "Trong Microsoft Word các thành phần Block Arrows, Stars and Banners, và Callouts là các ví dụ của _____",
+      "options": [
+        "Các kiểu trò chơi xây dựng của trẻ em",
+        "Các chủ đề Clip art trong bộ sưu tập Microsoft Clip Gallery.",
+        "Các chủ đề AutoShape .",
+        "Một thuật ngữ kỹ thuật chưa xác định."
+      ],
+      "answer": 2,
+      "explanation": "Đáp án đúng là lựa chọn: C. Các chủ đề AutoShape ."
+    },
+    {
+      "id": "tinhockp-166",
+      "topicId": "word",
+      "text": "Khi soạn thảo văn bản trong Microsoft Word, để khai báo thời gian tự lưu văn bản, ta thực hiện _____",
+      "options": [
+        "File - Options - Save chọn thời gian tại mục Save AutoRecover info every",
+        "Home - Options - Save chọn thời gian tại mục Save AutoRecover info every",
+        "View - Options - Save chọn thời gian tại mục Save AutoRecover info every",
+        "Insert - Options - Save chọn thời gian tại mục Save AutoRecover info every"
+      ],
+      "answer": 0,
+      "explanation": "Đáp án đúng là lựa chọn: A. File - Options - Save chọn thời gian tại mục Save AutoRecover info every"
+    },
+    {
+      "id": "tinhockp-167",
+      "topicId": "word",
+      "text": "Trong Microsoft Word để chèn header hoặc footer trên trang văn bản, ta thực hiện _____",
+      "options": [
+        "View - Header and Footer",
+        "Thẻ Insert - Header and Footer - nhấn nút Header hoặc Footer",
+        "Insert - Header and Footer",
+        "Format- Header and Footer"
+      ],
+      "answer": 1,
+      "explanation": "Đáp án đúng là lựa chọn: B. Thẻ Insert - Header and Footer - nhấn nút Header hoặc Footer"
+    },
+    {
+      "id": "tinhockp-201",
+      "topicId": "excel",
+      "text": "Tập hợp các bảng tính trong một file Excel được gọi là một",
+      "options": [
+        "Document",
+        "Presentation",
+        "Sheet",
+        "Book"
+      ],
+      "answer": 3,
+      "explanation": "Đáp án đúng là lựa chọn: D. Book"
+    },
+    {
+      "id": "tinhockp-202",
+      "topicId": "excel",
+      "text": "Trong Microsoft Excel, câu nào sau đây là đúng nhất?",
+      "options": [
+        "Chiều cao của một ô là độc lập với các ô khác cùng hàng",
+        "Có thể ẩn một hàng hoặc cột không cho hiển thị",
+        "Có thể ẩn một ô không cho hiển thị",
+        "Có thể tùy chỉnh độ rộng của các ô trong cùng một cột khác nhau"
+      ],
+      "answer": 1,
+      "explanation": "Đáp án đúng là lựa chọn: B. Có thể ẩn một hàng hoặc cột không cho hiển thị"
+    },
+    {
+      "id": "tinhockp-203",
+      "topicId": "excel",
+      "text": "Trong Microsoft Excel, câu nào sau đây sai?",
+      "options": [
+        "Tính năng Auto Fill có thể dùng để sao chép dữ liệu",
+        "Chỉ auto fill được với các giá trị số",
+        "Chức năng AutoComplete có thể tắt đi được",
+        "Có thể dùng chức năng Series với kiểu dữ liệu ngày"
+      ],
+      "answer": 1,
+      "explanation": "Đáp án đúng là lựa chọn: B. Chỉ auto fill được với các giá trị số"
+    },
+    {
+      "id": "tinhockp-204",
+      "topicId": "excel",
+      "text": "Khi nhập liệu ngày tháng trong Microsoft Excel ở Việt nam, cần phải nhập theo định dạng nào sau đây?",
+      "options": [
+        "dd/mm/yyyy",
+        "mm/dd/yyyy",
+        "Tuỳ theo định dạng ngày tháng của máy tính",
+        "Tuỳ theo qui định ở Việt nam lúc đó"
+      ],
+      "answer": 2,
+      "explanation": "Đáp án đúng là lựa chọn: C. Tuỳ theo định dạng ngày tháng của máy tính"
+    },
+    {
+      "id": "tinhockp-205",
+      "topicId": "excel",
+      "text": "Đáp án nào sau đây sai? Khi nhập dữ liệu vào bảng tính Microsoft Excel thì:",
+      "options": [
+        "Dữ liệu kiểu số sẽ mặc định căn lề trái",
+        "Dữ liệu kiểu ký tự sẽ mặc định căn lề trái",
+        "Dữ liệu kiểu thời gian sẽ mặc định căn lề phải",
+        "Dữ liệu kiểu ngày tháng sẽ mặc định căn lề phải"
+      ],
+      "answer": 0,
+      "explanation": "Đáp án đúng là lựa chọn: A. Dữ liệu kiểu số sẽ mặc định căn lề trái"
+    },
+    {
+      "id": "tinhockp-206",
+      "topicId": "excel",
+      "text": "Trong bảng tính Microsoft Excel, các kiểu dữ liệu thông dụng là:",
+      "options": [
+        "Chuỗi, văn bản, ngày tháng",
+        "Số, logic, ngày tháng",
+        "Công thức, hàm, số, ngày tháng",
+        "Chuỗi, số, logic, ngày tháng, kiểu công thức"
+      ],
+      "answer": 3,
+      "explanation": "Đáp án đúng là lựa chọn: D. Chuỗi, số, logic, ngày tháng, kiểu công thức"
+    },
+    {
+      "id": "tinhockp-207",
+      "topicId": "excel",
+      "text": "Trong bảng tính Microsoft Excel, điều kiện trong hàm IF được phát biểu dưới dạng một phép so sánh. Khi cần so sánh khác nhau thì sử dụng ký hiệu nào?",
+      "options": [
+        "Dấu “#”",
+        "Dấu “&”",
+        "Dấu “<>”",
+        "Dấu “><”"
+      ],
+      "answer": 2,
+      "explanation": "Đáp án đúng là lựa chọn: C. Dấu “<>”"
+    },
+    {
+      "id": "tinhockp-208",
+      "topicId": "excel",
+      "text": "Trong khi làm việc với Microsoft Excel, để nhập vào công thức tính toán cho một ô, trước hết ta phải gõ",
+      "options": [
+        "Dấu chấm hỏi (?)",
+        "Dấu hai chấm (:)",
+        "Dấu bằng (=)",
+        "Dấu đô la ($)"
+      ],
+      "answer": 2,
+      "explanation": "Đáp án đúng là lựa chọn: C. Dấu bằng (=)"
+    },
+    {
+      "id": "tinhockp-209",
+      "topicId": "excel",
+      "text": "Trong Microsoft Excel, địa chỉ $A3$ là địa chỉ _____",
+      "options": [
+        "Tương đối",
+        "Tuyệt đối",
+        "Hỗn hợp",
+        "Biểu diễn sai"
+      ],
+      "answer": 3,
+      "explanation": "Đáp án đúng là lựa chọn: D. Biểu diễn sai"
+    },
+    {
+      "id": "tinhockp-210",
+      "topicId": "excel",
+      "text": "Trong Microsoft Excel, khi viết sai tên hàm trong tính toán, chương trình thông báo lỗi?",
+      "options": [
+        "#VALUE!",
+        "#N/A",
+        "#NAME?",
+        "#DIV/0!"
+      ],
+      "answer": 2,
+      "explanation": "Đáp án đúng là lựa chọn: C. #NAME?"
+    },
+    {
+      "id": "tinhockp-211",
+      "topicId": "excel",
+      "text": "Trong Microsoft Excel, cho bảng tính có vùng dữ liệu sau khi thực hiện sắp xếp dữ liệu theo chiều tăng dần, thứ tự sắp xếp nào sau đây là đúng?",
+      "options": [
+        "A010 - A100 - A011",
+        "A010 - A011 - A100",
+        "A100 - A010 - A011",
+        "A011 - A010 - A100"
+      ],
+      "answer": 1,
+      "explanation": "Đáp án đúng là lựa chọn: B. A010 - A011 - A100",
+      "imageUrl": "assets/images/m5_img1.jpg"
+    },
+    {
+      "id": "tinhockp-212",
+      "topicId": "excel",
+      "text": "Trong Microsoft Excel, thành phần thứ 3 trong hàm VLOOKUP là gì?",
+      "options": [
+        "Bảng dò",
+        "Cách dò",
+        "Cột tham chiếu để lấy kết quả",
+        "Dòng tham chiếu để lấy kết quả"
+      ],
+      "answer": 2,
+      "explanation": "Đáp án đúng là lựa chọn: C. Cột tham chiếu để lấy kết quả"
+    },
+    {
+      "id": "tinhockp-213",
+      "topicId": "excel",
+      "text": "Trong bảng tính Microsoft Excel, nếu trong một ô tính có các kí hiệu #####, điều đó có nghĩa là gì?",
+      "options": [
+        "Hàng chứa ô đó có độ cao quá thấp nên không hiển thị hết chữ số",
+        "Cột chứa ô đó có độ rộng quá hẹp nên không hiển thị hết chữ số",
+        "Tập tin chứa bảng tính bị nhiễm virus",
+        "Công thức nhập vào ô bị sai và Excel thông báo lỗi"
+      ],
+      "answer": 1,
+      "explanation": "Đáp án đúng là lựa chọn: B. Cột chứa ô đó có độ rộng quá hẹp nên không hiển thị hết chữ số"
+    },
+    {
+      "id": "tinhockp-214",
+      "topicId": "excel",
+      "text": "Trong bảng tính Microsoft Excel, để sửa dữ liệu trong một ô tính mà không cần nhập lại, ta thực hiện:",
+      "options": [
+        "Chọn ô tính cần sửa, rồi bấm phím F2",
+        "Chọn ô tính cần sửa, rồi bấm phím F1",
+        "Chọn ô tính cần sửa, rồi bấm phím F11",
+        "Chọn ô tính cần sửa, rồi bấm phím F12"
+      ],
+      "answer": 0,
+      "explanation": "Đáp án đúng là lựa chọn: A. Chọn ô tính cần sửa, rồi bấm phím F2"
+    },
+    {
+      "id": "tinhockp-215",
+      "topicId": "excel",
+      "text": "Trên thẻ Home của thanh công cụ Riboon trong Microsoft Excel, biểu tượng (Increase Decimal) có ý nghĩa gì cho vùng dữ liệu được lựa chọn",
+      "options": [
+        "Tăng số lẻ thập phân và làm tròn số",
+        "Giảm số lẻ thập phân và làm tròn số",
+        "Làm tròn số và lấy 2 số lẻ thập phân",
+        "Định dạng số theo kiểu phân lớp"
+      ],
+      "answer": 0,
+      "explanation": "Đáp án đúng là lựa chọn: A. Tăng số lẻ thập phân và làm tròn số",
+      "imageUrl": "assets/images/m5_img3.jpg"
+    },
+    {
+      "id": "tinhockp-216",
+      "topicId": "excel",
+      "text": "Trên thẻ Home của thanh công cụ Riboon trong Microsoft Excel, biểu tượng (Decrease Decimal) có ý nghĩa gì cho vùng dữ liệu được lựa chọn",
+      "options": [
+        "Tăng số lẻ thập phân và làm tròn số",
+        "Giảm số lẻ thập phân và làm tròn số",
+        "Làm tròn số và lấy 2 số lẻ thập phân",
+        "Định dạng số theo kiểu phân lớp"
+      ],
+      "answer": 1,
+      "explanation": "Đáp án đúng là lựa chọn: B. Giảm số lẻ thập phân và làm tròn số",
+      "imageUrl": "assets/images/m5_img5.jpg"
+    },
+    {
+      "id": "tinhockp-217",
+      "topicId": "excel",
+      "text": "Cho bảng số liệu như sau trong Microsoft Excel: Cho biết kiểu định dạng hiển thị dữ liệu ngày nào sau đây được áp dụng tại ô B1",
+      "options": [
+        "ddd d-m-yy",
+        "ddd dd-mm-yyyy",
+        "dddd dd-mm-yyyy",
+        "dddd dd-mmm-yyyy"
+      ],
+      "answer": 2,
+      "explanation": "Đáp án đúng là lựa chọn: C. dddd dd-mm-yyyy",
+      "imageUrl": "assets/images/m5_img4.jpg"
+    },
+    {
+      "id": "tinhockp-251",
+      "topicId": "powerpoint",
+      "text": "Trong PowerPoint, các hiệu ứng động dạng Entrance(màu xanh lá) là hiệu ứng _____",
+      "options": [
+        "Xuất hiện",
+        "Nhấn mạnh",
+        "Biến mất",
+        "Di chuyển"
+      ],
+      "answer": 0,
+      "explanation": "Đáp án đúng là lựa chọn: A. Xuất hiện"
+    },
+    {
+      "id": "tinhockp-252",
+      "topicId": "powerpoint",
+      "text": "Trong PowerPoint, các hiệu ứng động dạng Emphasis(màu vàng) là hiệu ứng _____",
+      "options": [
+        "Xuất hiện",
+        "Nhấn mạnh",
+        "Biến mất",
+        "Di chuyển"
+      ],
+      "answer": 1,
+      "explanation": "Đáp án đúng là lựa chọn: B. Nhấn mạnh"
+    },
+    {
+      "id": "tinhockp-253",
+      "topicId": "powerpoint",
+      "text": "Trong PowerPoint, các hiệu ứng động dạng Exit (màu đỏ) là hiệu ứng _____",
+      "options": [
+        "Xuất hiện",
+        "Nhấn mạnh",
+        "Biến mất",
+        "Di chuyển"
+      ],
+      "answer": 2,
+      "explanation": "Đáp án đúng là lựa chọn: C. Biến mất"
+    },
+    {
+      "id": "tinhockp-254",
+      "topicId": "powerpoint",
+      "text": "Trong PowerPoint, các hiệu ứng động dạng Motion Path là hiệu ứng _____",
+      "options": [
+        "Xuất hiện",
+        "Nhấn mạnh",
+        "Biến mất",
+        "Di chuyển"
+      ],
+      "answer": 3,
+      "explanation": "Đáp án đúng là lựa chọn: D. Di chuyển"
+    },
+    {
+      "id": "tinhockp-255",
+      "topicId": "powerpoint",
+      "text": "Chức năng nào sau đây không có trong PowerPoint?",
+      "options": [
+        "Column",
+        "Equation",
+        "Header & Footer",
+        "DropCap"
+      ],
+      "answer": 3,
+      "explanation": "Đáp án đúng là lựa chọn: D. DropCap"
+    },
+    {
+      "id": "tinhockp-256",
+      "topicId": "powerpoint",
+      "text": "Trong PowerPoint, khẳng định nào sau đây là sai về vùng ghi chú (Note Page) của PowerPoint?",
+      "options": [
+        "Không được hiển thị khi thuyết trình ở chế độ bình thường",
+        "Có thể chèn các đối tượng hình ảnh vào vùng ghi chú",
+        "Có thể in vùng ghi chú khi in bài thuyết trình",
+        "Người thuyết trình không thể xem nội dung trong vùng ghi chú khi bắt đầu thuyết trình"
+      ],
+      "answer": 3,
+      "explanation": "Đáp án đúng là lựa chọn: D. Người thuyết trình không thể xem nội dung trong vùng ghi chú khi bắt đầu thuyết trình"
+    },
+    {
+      "id": "tinhockp-257",
+      "topicId": "powerpoint",
+      "text": "Trong PowerPoint, thông số nào không có trong chức năng Animation - Timing của PowerPoint?",
+      "options": [
+        "Time",
+        "Repeat",
+        "Duration",
+        "Delay"
+      ],
+      "answer": 0,
+      "explanation": "Đáp án đúng là lựa chọn: A. Time"
+    },
+    {
+      "id": "tinhockp-258",
+      "topicId": "powerpoint",
+      "text": "Trong PowerPoint, phát biểu nào sau đây là sai ?",
+      "options": [
+        "SmartArt sẽ tự động tùy chỉnh kích cữ chữ để vừa với kích thước",
+        "Có thể chuyển đổi qua lại giữa SmartArt và Shapes",
+        "Tùy chỉnh các đối tượng SmartArt cũng tương tự như Shapes",
+        "Có thể thểm/bớt các thành phần trong SmartArt tùy ý"
+      ],
+      "answer": 2,
+      "explanation": "Đáp án đúng là lựa chọn: C. Tùy chỉnh các đối tượng SmartArt cũng tương tự như Shapes"
+    },
+    {
+      "id": "tinhockp-259",
+      "topicId": "powerpoint",
+      "text": "Chức năng Photo Album trong PowerPoint được dùng để",
+      "options": [
+        "Lưu tập tin trình chiếu dưới dạng danh sách các ảnh để xem",
+        "Chèn 1 đối tượng hình ảnh vào Slide",
+        "Tạo một danh sách ảnh để sử dụng cho buổi trình chiếu",
+        "Đóng gói các slide trình chiếu thành một tập tin ảnh"
+      ],
+      "answer": 2,
+      "explanation": "Đáp án đúng là lựa chọn: C. Tạo một danh sách ảnh để sử dụng cho buổi trình chiếu"
+    },
+    {
+      "id": "tinhockp-260",
+      "topicId": "powerpoint",
+      "text": "PowerPoint không hỗ trợ lưu với định dạng nào dưới đây",
+      "options": [
+        "PDF",
+        "PPTX",
+        "TXT",
+        "WMV"
+      ],
+      "answer": 2,
+      "explanation": "Đáp án đúng là lựa chọn: C. TXT"
+    },
+    {
+      "id": "tinhockp-261",
+      "topicId": "powerpoint",
+      "text": "Chức năng nào vừa có trong Word vừa có trong PowerPoint?",
+      "options": [
+        "Action Buttons",
+        "DropCap",
+        "Subscript",
+        "Column"
+      ],
+      "answer": 2,
+      "explanation": "Đáp án đúng là lựa chọn: C. Subscript"
+    },
+    {
+      "id": "tinhockp-262",
+      "topicId": "powerpoint",
+      "text": "Trong PowerPoint, chức năng Duration trong hiệu ứng chuyển Slide có ý nghĩa gì?",
+      "options": [
+        "Thời gian chờ để chạy qua Slide khác",
+        "Thời gian để Slide xuất hiện hoàn chỉnh",
+        "Thời gian để kết thúc Slide",
+        "Thời gian chờ để chạy hiệu ứng cho các đối tượng trong slide"
+      ],
+      "answer": 1,
+      "explanation": "Đáp án đúng là lựa chọn: B. Thời gian để Slide xuất hiện hoàn chỉnh"
+    },
+    {
+      "id": "tinhockp-263",
+      "topicId": "powerpoint",
+      "text": "Trong PowerPoint, Effect Option là chức năng dùng để _____",
+      "options": [
+        "Thểm hiệu ứng động cho đối tượng",
+        "Thểm hiệu ứng chuyển Slide",
+        "Thểm liên kết cho đối tượng",
+        "Thay đổi hướng di chuyển của hiệu ứng"
+      ],
+      "answer": 3,
+      "explanation": "Đáp án đúng là lựa chọn: D. Thay đổi hướng di chuyển của hiệu ứng"
+    },
+    {
+      "id": "tinhockp-264",
+      "topicId": "powerpoint",
+      "text": "Trong PowerPoint, phím nào được dùng để dừng bài trình chiếu khi đang trình diễn?",
+      "options": [
+        "End",
+        "Page Down",
+        "Home",
+        "Esc"
+      ],
+      "answer": 3,
+      "explanation": "Đáp án đúng là lựa chọn: D. Esc"
+    },
+    {
+      "id": "tinhockp-265",
+      "topicId": "powerpoint",
+      "text": "Trong PowerPoint, để chỉnh chiều của Slide, ta sử dụng chức năng",
+      "options": [
+        "Home - Arrange",
+        "Design - Page Setup",
+        "Preview - Compare",
+        "View - Slide Master"
+      ],
+      "answer": 1,
+      "explanation": "Đáp án đúng là lựa chọn: B. Design - Page Setup"
+    },
+    {
+      "id": "tinhockp-266",
+      "topicId": "powerpoint",
+      "text": "Trong PowerPoint, Để thiết lập các thông số trang in ta thực hiện",
+      "options": [
+        "Chọn File -> Page Setup",
+        "Chọn File -> Print",
+        "Chọn File -> Print Preview",
+        "Chọn File -> Properties"
+      ],
+      "answer": 1,
+      "explanation": "Đáp án đúng là lựa chọn: B. Chọn File -> Print"
+    }
+  ]
+}

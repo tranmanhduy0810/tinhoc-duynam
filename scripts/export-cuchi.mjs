@@ -1,25 +1,36 @@
-// Xuất bộ đề "Lớp học Củ Chi" thành HTML (đề + đáp án) để chuyển sang Word/PDF.
-// Chạy: node scripts/export-cuchi.mjs <thư mục ra>
-import { readFile, writeFile, mkdir } from 'node:fs/promises';
-import { fileURLToPath, pathToFileURL } from 'node:url';
-import path from 'node:path';
-const root = fileURLToPath(new URL('../', import.meta.url));
-const outDir = path.resolve(process.argv[2] || path.join(root, 'xuat-de'));
-await mkdir(outDir, { recursive: true });
-const set = JSON.parse(await readFile(path.join(root, 'site/data/lop-cu-chi.json'), 'utf8'));
-const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
-const letters = ['A', 'B', 'C', 'D'];
-const style = `<style>body{font-family:'Times New Roman';font-size:13pt;line-height:1.35}h1{text-align:center;font-size:18pt;margin:0}p.sub{text-align:center;margin:4pt 0 14pt}.q{margin:0 0 9pt}.q b{font-weight:bold}.opt{margin:0 0 0 18pt}img{max-width:420px}table{border-collapse:collapse}td{border:1px solid #000;padding:3pt 8pt;text-align:center}</style>`;
-const head = `<h1>${esc(set.title.toUpperCase())}</h1><p class="sub">Đề ôn tập ${set.questions.length} câu · ${esc(set.topicCodes.join(', '))} (Word, Excel, PowerPoint)</p><p>Họ và tên: ................................................ Lớp: ....................</p>`;
-const body = set.questions.map((q, i) => {
-  const img = q.imageUrl ? `<p class="opt"><img src="${pathToFileURL(path.join(root, 'site', q.imageUrl)).href}"></p>` : '';
-  return `<div class="q"><p><b>Câu ${i + 1}.</b> ${esc(q.text)}</p>${img}${q.options.map((o, j) => `<p class="opt">${letters[j]}. ${esc(o)}</p>`).join('')}</div>`;
-}).join('\n');
-await writeFile(path.join(outDir, 'de.html'), `<html><head><meta charset="utf-8">${style}</head><body>${head}${body}</body></html>`);
-const rows = [];
-for (let i = 0; i < set.questions.length; i += 10) {
-  const chunk = set.questions.slice(i, i + 10);
-  rows.push(`<tr>${chunk.map((_, j) => `<td><b>${i + j + 1}</b></td>`).join('')}</tr><tr>${chunk.map(q => `<td>${letters[q.answer]}</td>`).join('')}</tr>`);
-}
-await writeFile(path.join(outDir, 'dapan.html'), `<html><head><meta charset="utf-8">${style}</head><body><h1>ĐÁP ÁN · ${esc(set.title.toUpperCase())}</h1><p class="sub">${set.questions.length} câu</p><table>${rows.join('')}</table></body></html>`);
-console.log(`Đã tạo HTML trong ${outDir}`);
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const root = path.join(__dirname, '..');
+
+const data = JSON.parse(fs.readFileSync(path.join(root, 'site/data/lop-cu-chi.json'), 'utf8'));
+
+// Tạo CSV
+const csvRows = [['STT', 'ID', 'Chủ đề', 'Câu hỏi', 'A', 'B', 'C', 'D', 'Đáp án đúng', 'Giải thích', 'Hình ảnh']];
+data.questions.forEach((q, i) => {
+  csvRows.push([
+    i+1,
+    q.id,
+    q.topicId,
+    q.text,
+    q.options[0] || '',
+    q.options[1] || '',
+    q.options[2] || '',
+    q.options[3] || '',
+    q.options[q.answer] || '',
+    q.explanation,
+    q.imageUrl || ''
+  ]);
+});
+const csv = csvRows.map(r => r.map(c => '"' + String(c).replace(/"/g, '""') + '"').join(',')).join('\r\n');
+fs.writeFileSync(path.join(root, 'site/data/cuchi-50-cau.csv'), '\uFEFF' + csv); // BOM for Excel
+
+// Tạo JSON full
+fs.writeFileSync(path.join(root, 'site/data/cuchi-50-cau.json'), JSON.stringify({questions: data.questions}, null, 2));
+
+console.log('Đã tạo: site/data/cuchi-50-cau.csv và site/data/cuchi-50-cau.json');
+console.log('Truy cập: https://tranmanhduy0810.github.io/tinhoc-duynam/data/cuchi-50-cau.csv');
+console.log('Hoặc local: http://127.0.0.1:4173/data/cuchi-50-cau.csv');
