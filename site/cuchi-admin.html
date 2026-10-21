@@ -54,15 +54,26 @@
     
     async function loadResults() {
       try {
-        const res = await fetch(API + '/api/cuchi/admin', {headers:{'Accept':'application/json'}});
-        if (!res.ok) throw new Error('HTTP ' + res.status);
+        console.log('[Admin] Loading from:', API + '/api/cuchi/admin');
+        const res = await fetch(API + '/api/cuchi/admin', {
+          headers: {'Accept': 'application/json', 'Origin': location.origin}
+        });
+        console.log('[Admin] Response status:', res.status);
+        if (!res.ok) {
+          const text = await res.text();
+          console.error('[Admin] Error response:', text);
+          throw new Error('HTTP ' + res.status + ': ' + text);
+        }
         const data = await res.json();
+        console.log('[Admin] Data loaded:', data.entries?.length, 'entries');
         render(data.entries || []);
       } catch (e) {
-        console.error(e);
-        main.innerHTML = '<div class="empty-state"><p>Không tải được dữ liệu: ' + e.message + '</p></div>';
+        console.error('[Admin] Error:', e);
+        main.innerHTML = '<div class="empty-state"><p>Không tải được dữ liệu: ' + e.message + '</p><button class="btn primary" onclick="loadResults()">Thử lại</button></div>';
       }
     }
+    // Expose for retry button
+    window.loadResults = loadResults;
     
     function render(entries) {
       if (!entries.length) {
