@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Quản trị kết quả Củ Chi</title>
+  <link rel="stylesheet" href="./styles.css">
+  <style>
+    .admin-page {max-width:1200px;margin:0 auto;padding:24px}
+    .admin-header {display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;flex-wrap:wrap;gap:16px}
+    .admin-header h1 {margin:0}
+    .admin-table {width:100%;border-collapse:collapse;min-width:800px}
+    .admin-table th,.admin-table td {padding:12px 16px;border-bottom:1px solid var(--border);text-align:left;font-size:13px}
+    .admin-table th {background:#f8fafc;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.035em}
+    .admin-table tr:hover {background:#fbfdff}
+    .score-badge {display:inline-flex;align-items:center;justify-content:center;min-width:56px;padding:6px 12px;border-radius:8px;font-weight:600;font-variant-numeric:tabular-nums;font-size:14px}
+    .score-badge.green {background:var(--success-bg);color:var(--success)}
+    .score-badge.orange {background:var(--warning-bg);color:var(--warning)}
+    .score-badge.red {background:var(--danger-bg);color:var(--danger)}
+    .class-badge {display:inline-block;padding:4px 10px;border-radius:6px;font-size:12px;font-weight:500;background:var(--primary-light);color:var(--primary)}
+    .empty-state {text-align:center;padding:48px 24px;color:var(--muted)}
+    .empty-state svg {width:48px;height:48px;margin-bottom:16px;color:var(--muted)}
+    .btn-group {display:flex;gap:8px;flex-wrap:wrap}
+    .loading {text-align:center;padding:40px;color:var(--muted)}
+    @media(max-width:767px){
+      .admin-table {display:block;overflow-x:auto}
+      .admin-header {flex-direction:column;align-items:flex-start}
+    }
+  </style>
+</head>
+<body>
+  <main class="page admin-page" id="main">
+    <div class="loading">Đang tải dữ liệu…</div>
+  </main>
+  <script type="module">
+    const API = (location.hostname==='localhost'||location.hostname==='127.0.0.1') ? '' : 'https://tinhoc-duynam-leaderboard.tranmanhduy2107.workers.dev';
+    const main = document.getElementById('main');
+    
+    function scoreClass(score) {
+      if (score >= 7) return 'green';
+      if (score >= 5) return 'orange';
+      return 'red';
+    }
+    
+    function formatTime(seconds) {
+      const m = String(Math.floor(seconds/60)).padStart(2,'0');
+      const s = String(seconds%60).padStart(2,'0');
+      return `${m}:${s}`;
+    }
+    
+    function formatDate(ts) {
+      return new Date(ts).toLocaleString('vi-VN', {day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'});
+    }
+    
+    async function loadResults() {
+      try {
+        const res = await fetch(API + '/api/cuchi/admin', {headers:{'Accept':'application/json'}});
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        const data = await res.json();
+        render(data.entries || []);
+      } catch (e) {
+        console.error(e);
+        main.innerHTML = '<div class="empty-state"><p>Không tải được dữ liệu: ' + e.message + '</p></div>';
+      }
+    }
+    
+    function render(entries) {
+      if (!entries.length) {
+        main.innerHTML = '<div class="empty-state"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/><path d="M21 21l-6-6m-7 7l-6-6"/></svg><h2>Chưa có kết quả</h2><p>Chưa có học viên nào tham gia thi Củ Chi.</p></div>';
+        return;
+      }
+      main.innerHTML = `
+        <div class="admin-header">
+          <h1>Kết quả thi Củ Chi</h1>
+          <div class="btn-group">
+            <button class="btn primary" id="export-csv">Xuất CSV</button>
+            <button class="btn" id="export-excel">Xuất Excel</button>
+            <a class="btn" href="./#practice">← Về trang chủ</a>
+          </div>
+        </div>
+        <div style="overflow-x:auto">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>STT</th>
+                <th>Họ và tên</th>
+                <th>Lớp</th>
+                <th>Đúng/Tổng</th>
+                <th>Điểm</th>
+                <th>Thời gian</th>
+                <th>Ngày thi</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${entries.map((e,i)=>`<tr>
+                <td>${i+1}</td>
+                <td><strong>${escapeHtml(e.player_name)}</strong></td>
+                <td><span class="class-badge">${escapeHtml(e.class_name)}</span></td>
+                <td>${e.correct_answers}/${e.total_questions}</td>
+                <td><span class="score-badge ${scoreClass((e.correct_answers/e.total_questions)*10)}">${((e.correct_answers/e.total_questions)*10).toFixed(1)}</span></td>
+                <td>${formatTime(e.duration_seconds)}</td>
+                <td>${formatDate(e.submitted_at)}</td>
+              </tr>`).join('')}
+            </tbody>
+          </table>
+        </div>`;
+      bindExport(entries);
+    }
+    
+    function escapeHtml(text) {
+      return String(text).replace(/[&<>"']/g, c=>({'&':'&','<':'<','>':'>','"':'"',"'":'''}[c]));
+    }
+    
+    function scoreClass(score) {
+      if (score >= 7) return 'green';
+      if (score >= 5) return 'orange';
+      return 'red';
+    }
+    
+    function formatTime(seconds) {
+      const m = String(Math.floor(seconds/60)).padStart(2,'0');
+      const s = String(seconds%60).padStart(2,'0');
+      return `${m}:${s}`;
+    }
+    
+    function formatDate(ts) {
+      return new Date(ts).toLocaleString('vi-VN', {day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'});
+    }
+    
+    function bindExport(entries) {
+      document.getElementById('export-csv').onclick = () => {
+        const rows = [['STT','Họ và tên','Lớp','Đúng/Tổng','Điểm','Thời gian','Ngày thi']];
+        entries.forEach((e,i)=>rows.push([i+1,e.player_name,e.class_name,`${e.correct_answers}/${e.total_questions}`,((e.correct_answers/e.total_questions)*10).toFixed(1),formatTime(e.duration_seconds),formatDate(e.submitted_at)]));
+        const csv = rows.map(r=>r.map(c=>'"'+String(c).replace(/"/g,'""')+'"').join(',')).join('\r\n');
+        download('ket-qua-cu-chi.csv', csv, 'text/csv;charset=utf-8');
+      };
+      document.getElementById('export-excel').onclick = () => {
+        const rows = [['STT','Họ và tên','Lớp','Đúng/Tổng','Điểm','Thời gian','Ngày thi']];
+        entries.forEach((e,i)=>rows.push([i+1,e.player_name,e.class_name,`${e.correct_answers}/${e.total_questions}`,((e.correct_answers/e.total_questions)*10).toFixed(1),formatTime(e.duration_seconds),formatDate(e.submitted_at)]));
+        const wb = XLSX.utils.book_new();
+        const ws = XLSX.utils.aoa_to_sheet(rows);
+        XLSX.utils.book_append_sheet(wb, ws, 'Kết quả Củ Chi');
+        XLSX.writeFile(wb, 'ket-qua-cu-chi.xlsx');
+      };
+    }
+    
+    function download(filename, content, type) {
+      const blob = new Blob([content], {type});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url; a.download = filename; a.click();
+      setTimeout(()=>URL.revokeObjectURL(url), 1000);
+    }
+    
+    // Load SheetJS for Excel
+    const script = document.createElement('script');
+    script.src = 'https://cdn.sheetjs.com/xlsx-0.20.0/package/dist/xlsx.full.min.js';
+    script.onload = loadResults;
+    document.head.appendChild(script);
+  </script>
+</body>
+</html>

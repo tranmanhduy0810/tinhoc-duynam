@@ -15,3 +15,11 @@ export async function saveCuchi(request,env,respond){
  await env.DB.prepare('INSERT INTO cuchi_results (attempt_id,player_name,class_name,correct_answers,total_questions,duration_seconds,submitted_at) VALUES (?,?,?,?,15,?,?) ON CONFLICT(attempt_id) DO NOTHING').bind(s.attemptId,s.playerName,s.className,s.correct,s.duration,Date.now()).run();
  return respond(request,env,{ok:true,correct:s.correct,total:15},201);
 }
+export async function listCuchiResults(request, env, respond) {
+  const origin = request.headers.get('origin');
+  if (!origin || !String(env.ALLOWED_ORIGINS).split(',').includes(origin)) {
+    return respond(request, env, {error: 'Origin không được phép.'}, 403);
+  }
+  const result = await env.DB.prepare('SELECT * FROM cuchi_results ORDER BY submitted_at DESC').all();
+  return respond(request, env, {entries: result.results || []});
+}
